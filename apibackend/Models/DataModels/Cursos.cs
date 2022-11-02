@@ -3,6 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace apibackend.Models.DataModels
 {
+    public enum Nivel
+    {
+        Basico,
+        Intermedio,
+        Avanzado
+
+    };
     public class Cursos : BaseEntity
         
     {
@@ -19,14 +26,8 @@ namespace apibackend.Models.DataModels
         public string Objetivos { get; set; } = string.Empty;
         [Required]
         public string Requisitos { get; set; } = string.Empty;
-        
-        public enum Nivel
-        {
-            Basico,
-            Intermedio,
-            Avanzado
-
-        };
+        public Nivel Nivel { get; set; } = Nivel.Basico;
+       
 
 
 
