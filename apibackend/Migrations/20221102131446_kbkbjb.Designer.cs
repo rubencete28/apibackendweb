@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using apibackend.Dates;
 
@@ -11,9 +12,10 @@ using apibackend.Dates;
 namespace apibackend.Migrations
 {
     [DbContext(typeof(UniversityDb))]
-    partial class UniversityDbModelSnapshot : ModelSnapshot
+    [Migration("20221102131446_kbkbjb")]
+    partial class kbkbjb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

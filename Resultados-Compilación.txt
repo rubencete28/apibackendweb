@@ -1,0 +1,5 @@
+﻿Operación Compilar iniciada..
+1>------ Operación Compilar iniciada: Proyecto: apibackend, configuración: Debug Any CPU ------
+1>Omitiendo analizadores para acelerar la compilación. Puede ejecutar los comandos "Build" o "Rebuild" para ejecutar los analizadores.
+1>apibackend -> C:\opencamp\aspnet\Introducción a .NET y creación de APIs\apibackendweb\apibackend\bin\Debug\net6.0\apibackend.dll
+========== Compilación: 1 correctos, 0 dieron error, 0 actualizados, 0 omitidos ==========

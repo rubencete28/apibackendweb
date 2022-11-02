@@ -7,16 +7,21 @@ namespace apibackend.Models.DataModels
         [Required]
         [Key]
         public int Id { get; set; }
+        //public int userID { get; set; }
+        //public  User CreateBy { get; set; } = new User();
         public string CreateBy { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        public string UpdateBy { get; set; } = string.Empty;
+        //public User UpdateBy { get; set; } = new User();
+        public string UpdateBy { get; set; } = string.Empty ;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public DateTime DeletedAt { get; set; } = DateTime.Now;
+        //public User DeletedBy { get; set; } = new User();
         public string DeletedBy { get; set; } = string.Empty;
+
         public bool IsDeleted { get; set; } = false;
 
-
+        
 
     }
 }

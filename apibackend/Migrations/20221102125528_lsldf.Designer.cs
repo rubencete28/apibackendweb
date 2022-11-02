@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using apibackend.Dates;
 
@@ -11,9 +12,10 @@ using apibackend.Dates;
 namespace apibackend.Migrations
 {
     [DbContext(typeof(UniversityDb))]
-    partial class UniversityDbModelSnapshot : ModelSnapshot
+    [Migration("20221102125528_lsldf")]
+    partial class lsldf
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,6 +187,9 @@ namespace apibackend.Migrations
                 {
                     b.HasBaseType("apibackend.Models.DataModels.BaseEntity");
 
+                    b.Property<int>("BaseEntityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("EmailAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -205,10 +210,7 @@ namespace apibackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("StudentId");
+                    b.HasIndex("BaseEntityId");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -267,20 +269,19 @@ namespace apibackend.Migrations
 
             modelBuilder.Entity("apibackend.Models.DataModels.User", b =>
                 {
-                    b.HasOne("apibackend.Models.DataModels.Student", null)
-                        .WithMany("users")
-                        .HasForeignKey("StudentId");
+                    b.HasOne("apibackend.Models.DataModels.BaseEntity", "BaseEntity")
+                        .WithMany()
+                        .HasForeignKey("BaseEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaseEntity");
                 });
 
             modelBuilder.Entity("apibackend.Models.DataModels.Curso", b =>
                 {
                     b.Navigation("Chapters")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("apibackend.Models.DataModels.Student", b =>
-                {
-                    b.Navigation("users");
                 });
 #pragma warning restore 612, 618
         }

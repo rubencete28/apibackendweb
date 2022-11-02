@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using apibackend.Models.DataModels;
+using Index = apibackend.Models.DataModels.Chapter;
 
 namespace apibackend.Dates
 {
@@ -9,10 +10,19 @@ namespace apibackend.Dates
         {
 
         }
-        public DbSet<Users> ?Users { get; set; }
-        public DbSet<Cursos>? Cursos { get; set; }
 
+        //tables incluyes
+        public DbSet<User> ?Users { get; set; }
+        
+        public DbSet<Curso>? Cursos { get; set; }
 
+        public DbSet<Category>? Category { get; set; }
+
+        public DbSet<Student>? Students { get; set; }
+
+        public DbSet<Chapter>? Chapters { get; set; }
+
+        public DbSet<apibackend.Models.DataModels.BaseEntity> BaseEntity { get; set; }
 
     }
 }

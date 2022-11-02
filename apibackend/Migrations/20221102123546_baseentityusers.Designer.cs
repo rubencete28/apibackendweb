@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using apibackend.Dates;
 
@@ -11,9 +12,10 @@ using apibackend.Dates;
 namespace apibackend.Migrations
 {
     [DbContext(typeof(UniversityDb))]
-    partial class UniversityDbModelSnapshot : ModelSnapshot
+    [Migration("20221102123546_baseentityusers")]
+    partial class baseentityusers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,9 +31,6 @@ namespace apibackend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("BaseEntitiesId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CreateBy")
                         .IsRequired()
@@ -62,8 +61,6 @@ namespace apibackend.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BaseEntitiesId");
 
                     b.ToTable("BaseEntity");
 
@@ -205,23 +202,12 @@ namespace apibackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int>("baseEntityId")
                         .HasColumnType("int");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("baseEntityId");
 
                     b.HasDiscriminator().HasValue("User");
-                });
-
-            modelBuilder.Entity("apibackend.Models.DataModels.BaseEntity", b =>
-                {
-                    b.HasOne("apibackend.Models.DataModels.BaseEntity", "BaseEntities")
-                        .WithMany()
-                        .HasForeignKey("BaseEntitiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BaseEntities");
                 });
 
             modelBuilder.Entity("CategoryCurso", b =>
@@ -267,20 +253,19 @@ namespace apibackend.Migrations
 
             modelBuilder.Entity("apibackend.Models.DataModels.User", b =>
                 {
-                    b.HasOne("apibackend.Models.DataModels.Student", null)
-                        .WithMany("users")
-                        .HasForeignKey("StudentId");
+                    b.HasOne("apibackend.Models.DataModels.BaseEntity", "baseEntity")
+                        .WithMany()
+                        .HasForeignKey("baseEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("baseEntity");
                 });
 
             modelBuilder.Entity("apibackend.Models.DataModels.Curso", b =>
                 {
                     b.Navigation("Chapters")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("apibackend.Models.DataModels.Student", b =>
-                {
-                    b.Navigation("users");
                 });
 #pragma warning restore 612, 618
         }

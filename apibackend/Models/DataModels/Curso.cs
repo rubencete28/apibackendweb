@@ -10,7 +10,7 @@ namespace apibackend.Models.DataModels
         Avanzado
 
     };
-    public class Cursos : BaseEntity
+    public class Curso : BaseEntity
         
     {
         [Required, StringLength(50)]
@@ -27,7 +27,11 @@ namespace apibackend.Models.DataModels
         [Required]
         public string Requisitos { get; set; } = string.Empty;
         public Nivel Nivel { get; set; } = Nivel.Basico;
-       
+
+        [Required]
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
+       public ICollection<Student> students { get; set; } = new List<Student>();
+        public Chapter Chapters{ get; set; } = new Chapter();
 
 
 
