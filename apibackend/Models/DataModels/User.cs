@@ -15,7 +15,7 @@ namespace apibackend.Models.DataModels
         public string EmailAddress { get; set; } = string.Empty;
         [Required]
         public string Password { get; set; } = string.Empty;
-        
-        
+        //public BaseEntity baseEntity { get; set; } = new BaseEntity();
+
     }
 }

@@ -10,7 +10,9 @@ namespace apibackend.Models.DataModels
         [Required]
 
         public string Name { get; set; } =string.Empty;
-       public ICollection<Curso> Cursos { get; set; } = new List<Curso>();
+      
+        public ICollection<Curso> cursos { get; set; } = new List<Curso>();   
+
 
     }
 }

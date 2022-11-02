@@ -9,7 +9,7 @@ namespace apibackend.Models.DataModels
         Intermedio,
         Avanzado
 
-    };
+    }
     public class Curso : BaseEntity
         
     {
@@ -29,10 +29,14 @@ namespace apibackend.Models.DataModels
         public Nivel Nivel { get; set; } = Nivel.Basico;
 
         [Required]
-        public ICollection<Category> Categories { get; set; } = new List<Category>();
-       public ICollection<Student> students { get; set; } = new List<Student>();
-        public Chapter Chapters{ get; set; } = new Chapter();
+        public ICollection<Category> categories { get; set;} = new List<Category>();
+        [Required]
 
+        public Chapter Chapter { get; set; } =  new Chapter();
+        [Required]
+       
+        public ICollection<Student> students { get; set; } = new List<Student>();
+       
 
 
 

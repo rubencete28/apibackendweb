@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.Security.Permissions;
 
 namespace apibackend.Models.DataModels
 {
@@ -14,9 +15,7 @@ namespace apibackend.Models.DataModels
         [Required]
         public DateTime Dob { get; set; }
        
-        public ICollection<Curso> Cursos { get; set; } = new List<Curso>();  
-        public ICollection<User> users { get; set; } = new List<User>();
-
+       public ICollection<Curso> Curso { get; set; } = new List<Curso>();
 
     }
 }

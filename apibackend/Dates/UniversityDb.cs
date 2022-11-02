@@ -18,11 +18,11 @@ namespace apibackend.Dates
 
         public DbSet<Category>? Category { get; set; }
 
-        public DbSet<Student>? Students { get; set; }
+       public DbSet<Student>? Students { get; set; }
 
-        public DbSet<Chapter>? Chapters { get; set; }
+       public DbSet<Chapter>? Chapters { get; set; }
 
-        public DbSet<apibackend.Models.DataModels.BaseEntity> BaseEntity { get; set; }
+       
 
     }
 }
